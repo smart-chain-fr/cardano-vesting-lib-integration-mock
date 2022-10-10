@@ -1,0 +1,1 @@
+declare module "cardashift-lucid-contracts";
