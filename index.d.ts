@@ -1,1 +1,1 @@
-declare module "cardashift-lucid-contracts";
+declare module "cardano-simple-script-vesting";

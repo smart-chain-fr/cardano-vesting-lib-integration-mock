@@ -1,32 +1,34 @@
 import config from "../config";
-import Claim, { selectWalletProvider, networkName } from "cardashift-lucid-contracts";
+import Claim, { selectWalletProvider, networkName } from "cardano-simple-script-vesting";
 
 const walletProvider = "nami";
 
-const toClaim = {
+const toClaim = [
+  {
     // native1
-    addr_test1wrjc6q0tespvesuha44jwmrkaeqaa3m8f3t8gdu4asxrw2czhs6za: [
-      {
-        nativeScript: {
-          unlockTime: 67189509,
-          pkh: "d1e3f14070d32f2b3e167417f0ecbf77328f5520ca7aa6e0fb904c60",
-        },
-        asset: { currencySymbol: "", tokenName: "" },
-      },
-    ],
-    addr_test1wra92cpq8rsefwxjpktutpexqrsa9keh5s6yr8rge030vkqdp9mdl: [
-      {
-        nativeScript: {
-          unlockTime: 67190409,
-          pkh: "d1e3f14070d32f2b3e167417f0ecbf77328f5520ca7aa6e0fb904c60",
-        },
-        asset: { currencySymbol: "", tokenName: "" },
-      },
+    address: "addr_test1wq8pmhtxwuzdnfu3mqsvden7mrhgkw2lcv54tyvgnusskjcdwjeg3",
+    nativeScript: {
+      requireTimeAfterSlot: 17317800,
+      requireSignature: "d1e3f14070d32f2b3e167417f0ecbf77328f5520ca7aa6e0fb904c60",
+    },
+    assets: [
+      { currencySymbol: "3450cad5f6a513eefc5e1a91cbeddf5657bb9b21354e7903983cd777", tokenName: "74434c4150" },
     ]
-  };
+  },
+  {
+    // native2
+    address: "addr_test1wq03hjpm3qua770v02zmhkcfk6u7fxjxqly5aeequeaw4dgu6xa3z",
+    nativeScript: {
+      requireTimeAfterSlot: 17321400,
+      requireSignature: "d1e3f14070d32f2b3e167417f0ecbf77328f5520ca7aa6e0fb904c60",
+    },
+    assets: [
+      { currencySymbol: "3450cad5f6a513eefc5e1a91cbeddf5657bb9b21354e7903983cd777", tokenName: "74434c4150" },
+    ]
+  }
+];
 
 const check = async () => {
-    //const toClaim = await getEndpointData();
     try {
         const wProvider = await selectWalletProvider(walletProvider);
         const claim = new Claim(networkName(config.network), wProvider, config.apiKey);
@@ -41,7 +43,6 @@ const check = async () => {
 }
 
 const claim = async () => {
-    //const toClaim = await getEndpointData();
     try {
         const wProvider = await selectWalletProvider(walletProvider);
         const claim = new Claim(networkName(config.network), wProvider, config.apiKey);
@@ -53,9 +54,6 @@ const claim = async () => {
         window.alert(`Unexpected error sending transaction: ${(error as any).message}`);
     }
 }
-
-const getEndpointData = (): Promise<any> =>
-    fetch("http://localhost:8000/data.json").then((r) => r.json());
 
 // Register Events handlers
 const checkBtn = document.getElementById('check');

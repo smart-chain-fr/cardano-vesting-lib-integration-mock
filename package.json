@@ -9,9 +9,8 @@
         "build": "./node_modules/webpack/bin/webpack.js && cp ./src/index.html ./dist"
     },
     "dependencies": {
-        "@dcspark/cardano-multiplatform-lib-nodejs": "^3.0.0",
         "buffer": "^6.0.3",
-        "cardashift-lucid-contracts": "^0.1.25"
+        "cardano-simple-script-vesting": "^1.0.0"
     },
     "devDependencies": {
         "http-server": "^14.1.1",
