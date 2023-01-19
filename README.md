@@ -1,5 +1,5 @@
 # vesting-lib-integration-mock
-Mocked website to test the cardano-simple-script-vesting library for claiming vested tokens.
+Mocked website to test the cardano-simple-script-vesting library for claiming vested tokens with a Nami wallet.
 
 ## Step 1: Generate simple script and address
 You can do it using cardano-cli (cf. [tuto]()).
